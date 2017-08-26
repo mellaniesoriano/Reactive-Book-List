@@ -1,3 +1,4 @@
+/*jshint esversion:6*/
 const booksFromFakeDB = [{
     _id : 1,
     title : 'Talion: The Revenant from DB',
@@ -25,4 +26,5 @@ export const addBookToFakeXHR = (book) => new Promise((resolve, reject) => {
     booksFromFakeDB.push(book);
     resolve(booksFromFakeDB);
   }, 500);
+  console.log('added new book!', book);
 });
