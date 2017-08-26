@@ -14,5 +14,4 @@ const BookList = ({ books }) =>
     }
   </div>
 
-
 export default BookList;
