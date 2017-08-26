@@ -12,8 +12,15 @@ class App extends Component {
 
     this.title = 'React Book List';
     this.state = {
-      books: []
+      books: [],
+      searchBooks: ''
     };
+  }
+
+  searchFilter(e) {
+    this.setState({
+      searchBooks: e.target.value
+    });
   }
 
   componentDidMount() {
@@ -29,7 +36,8 @@ class App extends Component {
     return (
       <div>
       <AppTitle title={ this.title } />
-      <BookList books={ this.state.books } />
+      <BookFilterInput searchFilter={ this.searchFilter.bind(this) } />
+      <BookList books={ this.state.books } searchBooks={ this.state.searchBooks } />
       </div>
       );
   }
