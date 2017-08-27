@@ -4,17 +4,17 @@ import Book from '../../components/Book.js';
 
 class BookList extends Component {
   render() {
-    const { books, searchBooks } = this.props;
+    const { books, bookFilter } = this.props;
 
     return (
-      <div>
+      <div className="book-list-container">
         {books
-          .filter(book => {
-            return (
-              searchBooks === '' || book.title.toLowerCase().indexOf(searchBooks.toLowerCase()) >= 0 || book.author.toLowerCase().indexOf(searchBooks.toLowerCase()) >= 0
-              );
-          })
-          .map( (book, i) =>
+          .filter(book =>
+            bookFilter === '' ||
+            book.title.toLowerCase().indexOf(bookFilter.toLowerCase()) > -1 ||
+            book.author.toLowerCase().indexOf(bookFilter.toLowerCase()) > -1
+            )
+          .map((book, i) =>
             <Book
               title={ book.title }
               author={ book.author }

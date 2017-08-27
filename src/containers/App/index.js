@@ -13,33 +13,55 @@ class App extends Component {
     this.title = 'React Book List';
     this.state = {
       books: [],
-      searchBooks: ''
+      bookFilter: ''
     };
   }
 
-  searchFilter(e) {
+  handleFilterChange(evt) {
     this.setState({
-      searchBooks: e.target.value
+      bookFilter: evt.target.value
     });
   }
 
+  addBook(book) {
+    addBookToFakeXHR(book)
+      .then(book => {
+        this.setState({
+          books: book
+        });
+      });
+    }
+
   componentDidMount() {
     getBooksFromFakeXHR()
-      .then(books => {
+      .then(getBook => {
         this.setState({
-          books: books
+          books: getBook
         });
       });
     }
 
   render() {
     return (
-      <div>
-      <AppTitle title={ this.title } />
-      <BookFilterInput searchFilter={ this.searchFilter.bind(this) } />
-      <BookList books={ this.state.books } searchBooks={ this.state.searchBooks } />
+      <div className="app-container">
+        <AppTitle
+          title={ this.title }
+        />
+        <p>Search For Book:</p>
+        <BookFilterInput
+          handleFilterChange={ this.handleFilterChange.bind(this) }
+        />
+        <p>Add New Book:</p>
+        <NewBookForm
+          addBook={ this.addBook.bind(this) }
+        />
+        <br />
+        <BookList
+          books={ this.state.books }
+          bookFilter={ this.state.bookFilter }
+        />
       </div>
-      );
+    );
   }
 }
 
