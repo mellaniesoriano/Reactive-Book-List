@@ -2,9 +2,11 @@
 import React from 'react';
 
 const Book = ({ title, author }) =>
-  <div>
-    <h3>{ title }</h3>
-    <p>{ author }</p>
-  </div>;
+  <ul>
+    <li>
+      <h3>{ title }</h3>
+      <p>{ author }</p>
+    </li>
+  </ul>;
 
 export default Book;
