@@ -26,5 +26,4 @@ export const addBookToFakeXHR = (book) => new Promise((resolve, reject) => {
     booksFromFakeDB.push(book);
     resolve(booksFromFakeDB);
   }, 500);
-  console.log('added new book!', book);
 });
