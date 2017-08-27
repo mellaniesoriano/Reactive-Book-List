@@ -1,11 +1,16 @@
 /*jshint esversion:6*/
 import React from 'react';
 
-const BookFilterInput = ({ searchFilter }) =>
-  <input
-    type="text"
-    placeholder="Search for book"
-    onChange={ searchFilter }
-  />;
+const BookFilterInput = ({ handleFilterChange }) => {
+  return (
+    <input
+      id="book-filter"
+      type="text"
+      placeholder="Search for book"
+      onChange={ handleFilterChange }
+    />
+  )
+}
+
 
 export default BookFilterInput;
