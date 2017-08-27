@@ -14,11 +14,11 @@ class BookList extends Component {
             book.title.toLowerCase().indexOf(bookFilter.toLowerCase()) > -1 ||
             book.author.toLowerCase().indexOf(bookFilter.toLowerCase()) > -1
             )
-          .map((book, i) =>
+          .map(book =>
             <Book
               title={ book.title }
               author={ book.author }
-              key={ i }
+              key={ book._id }
             />)
         }
       </div>
